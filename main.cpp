@@ -11,13 +11,13 @@ class RC4
 public:
     RC4(const string& key)
     {
-        for (BYTE i = 0x00; i < 0xff; ++i)
-            S[i] = i;
+        for (int i = 0; i < 256; ++i)
+            S[i] = (BYTE)i;
 
-        BYTE j(0x00);
-        for (BYTE i = 0x00; i < 0xff; ++i)
+        BYTE j(0);
+        for (int i = 0; i < 256; ++i)
         {
-            j = (j + S[i] + key[i % key.size()]) % 0x100;
+            j = (j + S[i] + key[i % key.size()]) % 256;
             swap(S[i], S[j]);
         }
     }
