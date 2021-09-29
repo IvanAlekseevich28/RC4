@@ -11,11 +11,11 @@ class RC4
 public:
     RC4(const string& key)
     {
-        for (int i = 0; i < 256; ++i)
+        for (SIZE i = 0; i < 256; ++i)
             S[i] = (BYTE)i;
 
         BYTE j(0);
-        for (int i = 0; i < 256; ++i)
+        for (SIZE i = 0; i < 256; ++i)
         {
             j = (j + S[i] + key[i % key.size()]) % 256;
             swap(S[i], S[j]);
